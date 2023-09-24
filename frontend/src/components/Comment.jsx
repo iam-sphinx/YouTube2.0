@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { format } from "timeago.js";
@@ -57,9 +57,9 @@ const Comment = ({ comment }) => {
   const { currentVideo } = useSelector((state) => state.video);
 
   const [channel, setChannel] = useState({});
-  const deleteComment = async () => {
+  const deleteComment = useCallback(async () => {
     await axios.delete(`/comments/${comment._id}`);
-  };
+  });
   useEffect(() => {
     const fetchComment = async () => {
       const res = await axios.get(`/users/find/${comment.userId}`);
