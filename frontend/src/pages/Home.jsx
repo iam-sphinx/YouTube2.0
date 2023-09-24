@@ -12,6 +12,7 @@ const Container = styled.div`
 const Home = ({ type }) => {
   const [videos, setVideos] = useState([]);
 
+  
   useEffect(() => {
     const fetchVideos = async () => {
       const res = await axios.get(`videos/${type}`);
