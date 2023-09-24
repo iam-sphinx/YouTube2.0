@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import Comment from "./Comment";
 import axios from "axios";
@@ -48,13 +48,14 @@ const Comments = ({ videoId }) => {
 
   const [comments, setComments] = useState([]);
   const [text, setText] = useState("");
-  const addComment = async () => {
+  const addComment = useCallback(async () => {
     const res = await axios.post("/comments/", {
       videoId: currentVideo._id,
       desc: text,
     });
     console.log(res);
-  };
+  }, [currentVideo._id, text]);
+  
   useEffect(() => {
     const fetchComments = async () => {
       try {
@@ -64,6 +65,7 @@ const Comments = ({ videoId }) => {
     };
     fetchComments();
   }, [videoId, addComment]);
+  
   return (
     <Container>
       <NewComment>
