@@ -47,5 +47,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://youtube2-0backend.onrender.com/api"
+  "proxy": "https://youtube2-0backend.onrender.com/api",
+  "homepage": "https://github.com/iam-sphinx.github.io/YouTube2.0/"
 }
